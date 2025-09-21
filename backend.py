@@ -389,7 +389,7 @@ def get_material(sha1_of_username: str, subject: str, chapter: str):
     else:
         return os.listdir(materials_dir)
 
-def delete_temperory_chat(sha1_of_username: str):
+def delete_temporary_chat(sha1_of_username: str):
     temp = ["materials", "data"]
     for t in temp:
         dir_path = os.path.join(sha1_of_username, t, "Temporary", "Temporary Chat")
@@ -399,48 +399,3 @@ def delete_temperory_chat(sha1_of_username: str):
             except Exception as e:
                 return ("error", str(e))
     return "success"
-
-# --- Main execution block to initialize the database ---
-if __name__ == '__main__':
-    # This will create the study_app.db file and tables if they don't exist
-    init_db()
-
-    # --- Example Usage ---
-    # print("\n--- Running Examples ---")
-    
-    # # 1. Sign up a new user
-    # print("Signing up 'testuser'...")
-    # signup_status = signup_user("testuser", "password123")
-    # print(f"Signup status: {signup_status}")
-    
-    # # 2. Log in
-    # print("\nLogging in 'testuser'...")
-    # login_status = login_user("testuser", "password123")
-    # print(f"Login status: {login_status}")
-    
-    # # Get user hash for subsequent operations
-    # user_hash = generate_sha1_hash("testuser")
-    
-    # # 3. Add subjects and chapters
-    # print("\nAdding Subjects and Chapters...")
-    # print(f"Add Math: {add_subject(user_hash, 'Math')}")
-    # print(f"Add Science: {add_subject(user_hash, 'Science')}")
-    # print(f"Add Math again: {add_subject(user_hash, 'Math')}") # Should return "exists"
-    
-    # print(f"Add Math Chapter 1: {add_chapter(user_hash, 'Math', 'Chapter 1')}")
-    # print(f"Add Math Chapter 2: {add_chapter(user_hash, 'Math', 'Chapter 2')}")
-    # print(f"Add History Chapter 1: {add_chapter(user_hash, 'History', 'Chapter 1')}") # Will auto-create "History" subject
-    
-    # # 4. Retrieve data
-    # print("\n--- Retrieving Data ---")
-    # subjects = get_subjects(user_hash)
-    # print(f"Subjects for {user_hash[:10]}...: {subjects}")
-    
-    # math_chapters = get_chapters(user_hash, 'Math')
-    # print(f"Chapters for Math: {math_chapters}")
-    
-    # history_chapters = get_chapters(user_hash, 'History')
-    # print(f"Chapters for History: {history_chapters}")
-    
-    # science_chapters = get_chapters(user_hash, 'Science')
-    # print(f"Chapters for Science: {science_chapters}") # Should be empty
