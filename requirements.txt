@@ -1,0 +1,10 @@
+streamlit
+python-dotenv
+pydantic
+PyPDF2
+streamlit-float
+langchain
+langchain-community
+langchain-google-genai
+faiss-cpu
+python-docx
