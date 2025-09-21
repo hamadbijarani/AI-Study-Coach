@@ -490,7 +490,9 @@ def open_a_chapter():
 def temporary_chat():
     # st.header("📤 Temporary Chat")
     st.markdown("<h2 style='text-align: center;'>📤 Temporary Chat</h2>", unsafe_allow_html=True)
-    # st.session_state.app_layout = "centered"
+
+    if not st.session_state.app_layout == "wide":
+        st.session_state.app_layout = "wide"
 
     col1, col2, _ = st.columns([1, 3, 1])
     with col1:
