@@ -24,7 +24,7 @@ except RuntimeError:
 
 # 1. Loading environment variables
 load_dotenv()
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GOOGLE_API_KEY = st.getenv("GOOGLE_API_KEY")
 FAISS_INDEX_PATH = "faiss_index"
 EMBEDDING_MODEL = "models/embedding-001"
 LLM_MODEL = "gemini-1.5-flash"
