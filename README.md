@@ -1,6 +1,14 @@
-# AI-Study-Coach
+# 📘 AI Study Coach
 
 An interactive study assistant built with Python & Streamlit. Helps users learn by chatting with an AI, browsing chapters, saving temporary chats, and more.
+
+---
+
+## 🧪 Test the App
+
+Try out the experimental version of AI Study Coach hosted by Streamlit.
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://aistudycoach.streamlit.app/)
 
 ---
 
