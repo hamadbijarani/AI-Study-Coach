@@ -381,7 +381,6 @@ def open_a_chapter():
     if not st.session_state.app_layout == "wide":
         st.session_state.app_layout = "wide"
         st.rerun()
-
     if st.session_state.selected_subject is not None and st.session_state.selected_chapter is not None:
         if st.button("🏠 Home"):
             st.session_state.page = "🏠 Home"
@@ -500,6 +499,11 @@ def temporary_chat():
     with col1:
         st.info(" ⚠️ This is a temporary chat. All messages will be lost once you logout from current user.")
         st.markdown("---")
+        if st.session_state.vector_store_exists:
+            st.success("Vector store found for temporary chat.")
+        else:
+            st.warning("No vector store found for temporary chat. Please upload and process files to enable chat functionality.")
+        st.markdown("---")
         fileuploader = st.file_uploader("Upload study material (PDF, DOCX, TXT):", type=["pdf", "docx", "txt"])
         if fileuploader is not None:
             alert_placeholder = st.empty()
@@ -520,7 +524,13 @@ def temporary_chat():
                 st.rerun()
     with col2:
         chat_container = st.container(width=900, height=620, border=True)
-        vector_store = load_vector_store(st.session_state.sha1_of_username, "Temporary", "Temporary Chat")
+        # print(st.session_state.vector_store_exists)
+        if st.session_state.vector_store_exists:
+            vector_store = load_vector_store(st.session_state.sha1_of_username, "Temporary", "Temporary Chat")
+            # print("Vector store loaded")
+        else:
+            vector_store = None
+        # print(vector_store)
         with chat_container:
             conv_container = st.container(width=900, height=520, border=False)
             with conv_container:
@@ -637,6 +647,7 @@ def logout(setting_default_function):
     st.session_state.shown_login_alert = False
     if st.button("🚪 Logout", use_container_width=True, key="logout"):
         # Reset all session state variables to defaults
+        delete_temporary_chat(st.session_state.sha1_of_username)
         for key in list(st.session_state.keys()):
             del st.session_state[key]
             
