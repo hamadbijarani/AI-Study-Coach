@@ -381,6 +381,7 @@ def open_a_chapter():
     if not st.session_state.app_layout == "wide":
         st.session_state.app_layout = "wide"
         st.rerun()
+
     if st.session_state.selected_subject is not None and st.session_state.selected_chapter is not None:
         if st.button("🏠 Home"):
             st.session_state.page = "🏠 Home"
@@ -493,6 +494,7 @@ def temporary_chat():
 
     if not st.session_state.app_layout == "wide":
         st.session_state.app_layout = "wide"
+        st.rerun()
 
     col1, col2, _ = st.columns([1, 3, 1])
     with col1:
