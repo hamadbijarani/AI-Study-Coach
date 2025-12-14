@@ -13,7 +13,7 @@ from langchain_core.prompts import PromptTemplate
 import streamlit.components.v1 as components
 from langchain_community.vectorstores import FAISS
 from streamlit_float import float_init, float_css_helper
-from langchain.chains.question_answering.chain import load_qa_chain
+from langchain_classic.chains.question_answering.chain import load_qa_chain
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 
