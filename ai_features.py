@@ -258,7 +258,7 @@ def generate_quiz_from_faiss(vector_db, num_questions: int = 5):
     ]
     retriever = vector_db.as_retriever(search_type="similarity", search_kwargs={"k": 20})
     random_query = random.choice(retrieval_queries)
-    retrieved_docs = retriever.get_relevant_documents(random_query)
+    retrieved_docs = retriever.invoke(random_query)
 
     if len(retrieved_docs) > 15:
         docs_for_context = random.sample(retrieved_docs, 15)
@@ -335,7 +335,7 @@ def generate_flashcards_from_faiss(vector_db, num_flashcards: int = 5):
     ]
     retriever = vector_db.as_retriever(search_type="similarity", search_kwargs={"k": 20})
     random_query = random.choice(retrieval_queries)
-    retrieved_docs = retriever.get_relevant_documents(random_query)
+    retrieved_docs = retriever.invoke(random_query)
 
     if len(retrieved_docs) > 15:
         docs_for_context = random.sample(retrieved_docs, 15)
@@ -409,7 +409,7 @@ def generate_mindmap_from_faiss(vector_db):
     # Retrieve relevant documents from the vector store
     retriever = vector_db.as_retriever(search_type="similarity", search_kwargs={"k": 20})
     random_query = random.choice(retrieval_queries)
-    retrieved_docs = retriever.get_relevant_documents(random_query)
+    retrieved_docs = retriever.invoke(random_query)
 
     # Use a sample of the retrieved docs to form the context
     docs_for_context = random.sample(retrieved_docs, min(len(retrieved_docs), 15))
