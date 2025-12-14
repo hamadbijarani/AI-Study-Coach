@@ -27,7 +27,7 @@ load_dotenv()
 GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 FAISS_INDEX_PATH = "faiss_index"
 EMBEDDING_MODEL = "models/embedding-001"
-LLM_MODEL = "gemini-1.5-flash"
+LLM_MODEL = "gemini-2.5-flash"
 
 
 @st.cache_data(show_spinner=False)
